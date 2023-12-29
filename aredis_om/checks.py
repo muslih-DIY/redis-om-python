@@ -15,7 +15,7 @@ async def has_redis_json(conn=None):
     if conn is None:
         conn = get_redis_connection()
     command_exists = await check_for_command(conn, "json.set")
-    return command_exists[0]
+    return command_exists
 
 
 @lru_cache(maxsize=None)
@@ -25,4 +25,4 @@ async def has_redisearch(conn=None):
     if has_redis_json(conn):
         return True
     command_exists = await check_for_command(conn, "ft.search")
-    return command_exists[0]
+    return command_exists
