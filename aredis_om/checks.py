@@ -6,7 +6,7 @@ from aredis_om.connections import get_redis_connection
 
 @lru_cache(maxsize=None)
 async def check_for_command(conn, cmd):
-    cmd_info = await conn.execute_command("command", "info", cmd)
+    cmd_info = await conn.execute_command("command info", cmd)
     return None not in cmd_info
 
 
